@@ -14,7 +14,7 @@ public class ElectronicAdapter implements Electronic220v {
 	
 	@Override
 	public void connect() {
-		electronic110v.connect();		
+		electronic110v.connect();
 	}
 
 	

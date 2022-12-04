@@ -18,8 +18,8 @@ public class MyBase64Encoder implements IEncoder {
 	// 테스트 코드
 	public static void main(String[] args) {
 		MyBase64Encoder base64Encoder = new MyBase64Encoder();
-		String msg = base64Encoder.encode("안녕하세요포항항");
+		String msg = base64Encoder.encode("안녕하세요포항항ddddasdsaasdsasdadsas");
+		System.out.println("asdsasa");
 		System.out.println(msg);
 	}
-
 }

@@ -39,7 +39,8 @@ public class APIController {
 	@PostMapping("/act")
 	public Actor returnSelfActor(@RequestBody Actor actor) {
 		// 200
-		actor.setActorId("2"); 
+		actor.setActorId("2");
+		actor.setCode(200);
 		return actor;
 	}
 	
@@ -62,12 +63,15 @@ public class APIController {
 				.firstName("NICK")
 				.lastName("WAHLBERG")
 				.build();
+		Actor actorming = Actor.builder().firstName("이밍밍잘낫네").build();
 		
 		String json = "";
+		String json1 = "";
 		
 		MObjectConverter<Actor> converter = new MObjectConverter();
-		json = converter.objectToJson(actor);
-		return json;
+		json = converter.objectToJson(actor); 
+		json1 = converter.objectToJson(actorming); 
+		return json+json1;
 	}
 	
 	

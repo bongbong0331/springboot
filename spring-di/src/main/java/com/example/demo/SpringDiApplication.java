@@ -16,9 +16,15 @@ public class SpringDiApplication {
 		////////////////////////////////////////////////////////////////////////
 		
 		String mUrl = "www.naver.com/q?오늘축구이기나?";
-		MyEncoder encoder = new MyEncoder(asonEncoder);
+		
+		MyEncoder encoder = new MyEncoder(base64Encoder);
 		String result = encoder.encode(mUrl);
 		System.out.println(result);
+		
+		MyEncoder enco = new MyEncoder(asonEncoder);
+		
+		String result1 = enco.encode(mUrl);
+		System.out.println(result1);
 		
 	}
 
