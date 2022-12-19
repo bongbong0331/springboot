@@ -1,8 +1,7 @@
 server:
   port: 9090
   servlet:
-    context-path: /blog
-
+    context-path: /
 
 spring:
   mvc:
@@ -22,10 +21,18 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
-    show-sql: true
+      
+    show-sql: false
     properties:
       hibernate.format_sql: true
       
   jackson:
     serialization:
       fail-on-empty-beans: false
+      
+      
+tenco:
+  key: 85135f3c6bfe9df1735f8806f045ae73cece7219f7840d8e7e9297a7f846b48a
+  
+  
+  

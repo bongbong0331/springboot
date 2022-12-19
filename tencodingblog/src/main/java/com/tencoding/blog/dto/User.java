@@ -10,9 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.DynamicInsert;
 
 import com.tencoding.blog.model.RoleType;
 
@@ -39,19 +37,25 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  // 프로젝트에서 연결된 DB 넘버링 전략을 따라 간다.(auto_increment)
 	private int id;
 	
-	@Column(nullable = false, length = 30)	
+	// unique = true 제약 추가 !!!!
+	@Column(nullable = false, length = 50, unique = true)	
 	private String username;
 	
 	@Column(nullable = false, length = 100)
 	private String password;
 	
-	@Column(nullable = false, length = 50)
+	@Column(nullable = true, length = 50)
 	private String email;
 	
 //	@ColumnDefault(" 'user' ") // 문자 라는 것을 알려주어야 한다. -->>> (' ')
 	@Enumerated(EnumType.STRING) // DB에게 String 타입이라고 알려줘야 한다.
 //	private String role;  // admin, user, manager  
 	private RoleType role; // ---< 이넘 타입으로 변경
+	
+	
+	private String oauth; // kakao쓰면 카카오, google 은 google 최소한 두개 만들기 
+	
+	
 	
 	@CreationTimestamp // 시간이 자동으로 입력 된다.
 	private Timestamp createDate;
