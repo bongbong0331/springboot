@@ -20,7 +20,7 @@
 	<button type="button" id="btn--save" class="btn btn-primary">글쓰기 완료</button>
 </div>
 
-<script type="text/javascript">
+<script>
 	$('.content').summernote({
 		placeholder : '내용을 입력해주세요',
 		tabsize : 2,
@@ -28,9 +28,7 @@
 	});
 </script>
 
-<script type="text/javascript src=/js/board.js">
-
-</script>
+<script type="text/javascript" src="/js/board.js"></script>
 
 
 

@@ -18,18 +18,30 @@ let index = {
 	},
 
 	save: function() {
+		
+		let token = $("meta[name='_csrf']").attr("content");
+		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+		console.log("token 확인 : " + token);
+		console.log("csrfHeader 확인 : " + csrfHeader);
+		
+		
 		// form 태그 사용자가 입력한 값을 가지고 오기 --> 자바스크립트 변수로
 		let data = {
 			username: $("#username").val(),
 			password: $("#password").val(),
 			email: $("#email").val()
 		}
+		
+		
 		// console.log(data);
 		// todo -> ajax 로 통신 ( data -> json 변환 자바 서버로 전송 )
 
 		// ajax 통신 구현
 		// $.ajax().done().fail(); 예외처리
 		$.ajax({
+			beforeSend: function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
 			// 회원가입 요청
 			type: "POST",
 			url: "/auth/joinProc",
@@ -53,6 +65,11 @@ let index = {
 	
 	
 	update : function(){
+		
+		let token = $("meta[name='_csrf']").attr("content");
+		let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+		
+		
 		// 하나의 객체를 만들었따 
 		let data = {
 			id : $("#id").val(),
@@ -64,6 +81,9 @@ let index = {
 		// 방어적 코드 짜보기 if else alert 벨리데이션라이브러리 
 				
 		$.ajax({
+			beforeSend:function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
 			type : "PUT",
 			url : "/api/user",
 			data : JSON.stringify(data),
