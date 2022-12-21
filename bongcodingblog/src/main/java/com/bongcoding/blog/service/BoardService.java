@@ -33,13 +33,30 @@ public class BoardService {
 		return boardRepository.findAll(pageable);
 	}
 
-	public Board boardDetail(int id) {
+	@Transactional
+	public Board boardDetail(int boardId) {
 		
-		return boardRepository.findById(id).orElseThrow(() -> {
+		return boardRepository.findById(boardId).orElseThrow(() -> {
 			return new IllegalArgumentException("해당글몬찬트나");
 		});
 	}
+
+	@Transactional
+	public void deleteById(int id) {
+		boardRepository.deleteById(id);
+	}
 	
+	
+	@Transactional
+	public int modifyBoard(int boardId, Board board) {
+		Board boardEntity = boardRepository.findById(boardId).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 글을 못찾겟다");
+		});
+		
+		boardEntity.setTitle(board.getTitle());
+		boardEntity.setContent(board.getContent());
+		return 1;
+	}
 	
 	
 }

@@ -74,12 +74,14 @@ public class BoardApiController {
 	}
 
 	@PostMapping("/api/board/{boardId}/reply")
-	public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply requestReply,
+	public ResponseDto<Reply> replySave(@PathVariable int boardId, @RequestBody Reply requestReply,
 			@AuthenticationPrincipal PrincipalDetail principalDetail) {
 		// 서비스
-		boardService.writeReply(boardId, requestReply, principalDetail.getUser());
+		Reply replyEntity = boardService.writeReply(boardId, requestReply, principalDetail.getUser());
 
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		// 데이터 가져 오기
+		
+		return new ResponseDto<Reply>(HttpStatus.OK, replyEntity);
 	}
 
 	// url: `/api/board/${boardId}/reply/${replyId}`,

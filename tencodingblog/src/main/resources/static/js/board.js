@@ -133,7 +133,7 @@ let index = {
 
 		let replyData = {
 			boardId: $("#board-id").val(),    // fk (board pk)
-			content: $("#content").val()
+			content: $("#reply--content").val()
 		};
 
 
@@ -151,8 +151,8 @@ let index = {
 		}).done(function(data, textStatus, xhr) {
 			console.log(data);
 			if (data.status == "OK") {
-				alert("댓글 작성이 완료 되었습니다");
-				location.href = `/board/${replyData.boardId}`;
+				console.log(data.body);
+				addReplyElement(data.body);
 			}
 		}).fail(function(error) {
 			console.log(error);
@@ -160,6 +160,8 @@ let index = {
 		});
 
 	},
+	
+	
 	
 	
 	
@@ -187,6 +189,22 @@ let index = {
 		});
 	}
 }
+
+function addReplyElement(reply){
+	let childElement = `<li class="list-group-item d-flex justify-content-between" id="reply--${reply.id }">
+				<div>${reply.content }</div>
+				<div class="d-flex">
+					<div>작성자 : &nbsp;${reply.user.username }&nbsp;&nbsp;&nbsp;</div>
+
+						<button class="btn btn-danger badge" onclick="index.replyDelete(${reply.board.id}, ${reply.id });">삭제</button>
+				</div>
+			</li>`;
+	
+	$("#reply--box").prepend(childElement);
+	$("#reply--content").val("");
+}
+
+
 
 
 

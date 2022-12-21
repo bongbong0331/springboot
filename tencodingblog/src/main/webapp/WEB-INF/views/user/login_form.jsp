@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
+<br><br>
+
 <!-- /auth/loginProc  < --- 이녀석은  스프링이 알아서 처리 해줌 마법이 아니라
 loginProcessingUrl("/auth/loginProc") SecurityConfig 에있음 -->
 <div class="container">

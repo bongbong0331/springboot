@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
 
-
+<br><br>
 
 <div class="container">
 
@@ -33,7 +33,8 @@ page.last == true, false  < -- 마지막 페이지 last
 <ul class="pagination justify-content-center">
 	<c:set var="isDisabled" value="disabled"></c:set>
 	<c:set var="isNotDisabled" value=""></c:set>
-	<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${boards.number - 1 }">Previous</a></li>
+	<li class="page-item ${boards.first ? isDisabled : isNotDisabled } ">
+	<a class="page-link" href="?page=${boards.number - 1 }">Previous</a></li>
 		<!-- 반복문 처리 하기-->
 		<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
 	<c:forEach var="num" items="${pageNumbers }">
