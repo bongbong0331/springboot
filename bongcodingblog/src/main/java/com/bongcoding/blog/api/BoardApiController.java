@@ -33,6 +33,7 @@ public class BoardApiController {
 	
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> deleteDetailById(@PathVariable int id){
+		System.out.println("여기오나 삭제다 ");
 		boardService.deleteById(id);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}

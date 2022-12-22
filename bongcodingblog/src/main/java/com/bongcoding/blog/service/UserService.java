@@ -40,6 +40,30 @@ public class UserService {
 	return -1;
 		
 	}
+	@Transactional
+	public int updateUser(User requser) {
+		// TODO Auto-generated method stub
+		User userEntity = userRepository.findById(requser.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 사용자 찾을수 없다");
+		});
+		
+		String rawPassword = requser.getPassword();
+		String encPassword = encoder.encode(rawPassword);
+		
+		userEntity.setUsername(userEntity.getUsername());
+		userEntity.setPassword(encPassword);
+		userEntity.setEmail(requser.getEmail());
+				
+		return 1;
+	}
+	
+	@Transactional
+	public User searchUserName(String username) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUsername(username).orElseGet(() -> {
+			return new User();
+		});
+	}
 	
 	
 	

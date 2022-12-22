@@ -17,7 +17,8 @@
 	<input type="hidden" id="" value="${principal.user.id}">
 
 		<div class="form-group">
-			<label for="content" id="board-id" data-id="${board.id}"> 글번호 : ${board.id}</label>
+			<label>글번호:</label>
+			<label for="content" id="board-id" data-id="${board.id}">${board.id}</label>
 		</div>
 
 
