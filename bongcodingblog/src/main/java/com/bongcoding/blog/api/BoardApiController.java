@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bongcoding.blog.auth.PrincipalDetail;
 import com.bongcoding.blog.dto.Board;
+import com.bongcoding.blog.dto.Reply;
 import com.bongcoding.blog.dto.ResponseDto;
 import com.bongcoding.blog.service.BoardService;
 
@@ -43,6 +44,15 @@ public class BoardApiController {
 		System.out.println("아오옹");
 		int result = boardService.modifyBoard(boardId, board);
 		return new ResponseDto<Integer>(HttpStatus.OK, result);
+	}
+	
+	@PostMapping("/api/board/{boardId}/reply")
+	public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply requestReply,
+			@AuthenticationPrincipal PrincipalDetail principalDetail){
+		System.out.println("여기깢????????????????????????????????");
+		boardService.writeReply(boardId, requestReply, principalDetail.getUser());
+		
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 	
 }

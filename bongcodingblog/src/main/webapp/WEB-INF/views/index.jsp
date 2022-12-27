@@ -18,7 +18,7 @@
 
 ﻿
 
-	<c:set var="isDisabled" value="disabled"></c:set>
+	<c:set var="is Disabled" value="disabled"></c:set>
 	<c:set var="isNotDisabled" value=""></c:set>
 
 	<li class="page-item ${boards.first ? isDisabled : isNotDisabled }">

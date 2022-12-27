@@ -9,14 +9,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bongcoding.blog.dto.Board;
+import com.bongcoding.blog.dto.Reply;
 import com.bongcoding.blog.dto.User;
 import com.bongcoding.blog.repository.BoardRepository;
+import com.bongcoding.blog.repository.ReplyRepository;
 
 @Service
 public class BoardService {
 
 	@Autowired
 	private BoardRepository boardRepository;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
 	
 	
 	public void write(Board board, User user) {
@@ -56,6 +61,20 @@ public class BoardService {
 		boardEntity.setTitle(board.getTitle());
 		boardEntity.setContent(board.getContent());
 		return 1;
+	}
+	
+	@Transactional
+	public void writeReply(int boardId, Reply requestReply, User user) {
+		
+		Board board = boardRepository.findById(boardId).orElseThrow(() -> {
+			return new IllegalArgumentException("댓글쓰기실패");
+		});
+	
+		
+		requestReply.setUser(user);
+		requestReply.setBoard(board);
+		
+		replyRepository.save(requestReply);
 	}
 	
 	

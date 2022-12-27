@@ -188,7 +188,7 @@ let index = {
 			alert("댓글 삭제 실퍃햏ㅎ")
 		});
 	}
-}
+} // 인덱스 종료
 
 function addReplyElement(reply){
 	let childElement = `<li class="list-group-item d-flex justify-content-between" id="reply--${reply.id }">

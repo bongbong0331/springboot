@@ -47,12 +47,16 @@ public class UserService {
 			return new IllegalArgumentException("해당 사용자 찾을수 없다");
 		});
 		
-		String rawPassword = requser.getPassword();
-		String encPassword = encoder.encode(rawPassword);
+		if(userEntity.getOauth() == null || userEntity.getOauth().equals(" ")) {
+			String rawPassword = requser.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			
+			userEntity.setUsername(userEntity.getUsername());
+			userEntity.setPassword(encPassword);
+			userEntity.setEmail(requser.getEmail());
+		}
 		
-		userEntity.setUsername(userEntity.getUsername());
-		userEntity.setPassword(encPassword);
-		userEntity.setEmail(requser.getEmail());
+		
 				
 		return 1;
 	}
@@ -64,6 +68,8 @@ public class UserService {
 			return new User();
 		});
 	}
+	
+	
 	
 	
 	

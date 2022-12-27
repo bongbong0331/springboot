@@ -92,8 +92,10 @@ public class Reply {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
+	
 	@Column(nullable = false, length = 200)
 	private String content; 
+	
 	// board 연관 관계 처리
 	@ManyToOne
 	@JoinColumn(name = "boardId")

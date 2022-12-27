@@ -17,6 +17,10 @@ let index = {
 			console.log("수정오냐");
 		});
 		
+		$("#btn-reply-save").bind("click", () => {
+			this.replySave();
+		});
+		
 		
 		
 		
@@ -85,6 +89,33 @@ let index = {
 			alert("수정실퍀ㅋㅋ");
 			console.log(error);
 		});
+	},
+	
+	replySave: function(){
+		let replyData = {
+			boardId: $("#board-id").text(),
+			content: $("#content").val()
+		}
+		alert(replyData.boardId);
+		alert(replyData.content);
+		
+		$.ajax({
+			type: "POST",
+			url: `/api/board/${replyData.boardId}/reply`,
+			data: JSON.stringify(replyData),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(data, textStatus, xhr){
+			if(data.status == "OK"){
+				alert("댓글 작성이 완료댐");
+				location.href = `/board/${replyData.boardId}`;
+			}
+		}).fail((error) => {
+			console.log("댓실패다");
+			alert("댓글 작성 실패");
+		});
+		
+		
 	}
 	
 	

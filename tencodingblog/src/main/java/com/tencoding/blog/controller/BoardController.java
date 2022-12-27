@@ -34,7 +34,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	
+	 
 
 	// ?page=2
 	@GetMapping({ " " , "/", "/board/search" })
@@ -48,7 +48,7 @@ public class BoardController {
 		Page<Board> boards = boardService.searchBoard(searchTitle ,pageable);
 		
 		
-		
+		 
 		
 
 //		Page<Board> boards = boardService.getBoardList(pageable);
