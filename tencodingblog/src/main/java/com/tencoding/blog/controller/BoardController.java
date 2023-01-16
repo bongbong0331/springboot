@@ -1,7 +1,6 @@
 package com.tencoding.blog.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,12 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tencoding.blog.auth.PrincipalDetail;
 import com.tencoding.blog.dto.Board;
-import com.tencoding.blog.dto.ResponseDto;
 import com.tencoding.blog.service.BoardService;
 
 @Controller
@@ -46,7 +43,7 @@ public class BoardController {
 //		Page<Board> boards = boardService.getBoardList(pageable);
 		System.out.println("searchTitle:"+searchTitle);
 		Page<Board> boards = boardService.searchBoard(searchTitle ,pageable);
-		
+		System.out.println(boards + "boardsboardsboardsboards");
 		
 		 
 		
@@ -83,7 +80,7 @@ public class BoardController {
 		for(int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-		
+		System.out.println(pageNumbers.size()+ "ddddddddddddddddddddd");
 		model.addAttribute("boards", boards);
 		model.addAttribute("nowPage",nowPage);
 		model.addAttribute("startPageNumber",startPageNumber);
